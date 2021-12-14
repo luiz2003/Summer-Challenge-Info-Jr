@@ -8,9 +8,9 @@ const PORT = 3001 || process.env.PORT;
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
+const router = require('./routes/ideasRoutes.ts');
+
+app.use('/api', router);
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
