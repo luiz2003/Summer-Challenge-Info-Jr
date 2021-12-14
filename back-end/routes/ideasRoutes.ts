@@ -8,4 +8,6 @@ router.get('/', Controllers.all);
 
 router.post('/newIdeia', Controllers.postIdeia);
 
+router.get('/:category', Controllers.category);
+
 module.exports = router;
