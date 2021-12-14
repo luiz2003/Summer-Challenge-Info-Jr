@@ -8,6 +8,14 @@ const connection = mysql.createConnection({
   port: process.env.DB_PORT,
 });
 
+interface Idea {
+    title:string,
+    category:string,
+    main_link:string,
+    scnd_link:string,
+    description:string
+}
+
 const db = {
   all: () => new Promise((resolve, reject) => {
     connection.query('SELECT * FROM ideias', (err: any, results: any) => {
@@ -15,6 +23,15 @@ const db = {
         return reject(err);
       }
       console.log('Sucessful db query');
+      return (resolve(results));
+    });
+  }),
+  newIdeia: (idea:Idea) => new Promise((resolve, reject) => {
+    connection.query('INSERT INTO ideias SET ?', idea, (err: any, results: any) => {
+      if (err) {
+        return reject(err);
+      }
+      console.log('Sucessful db post');
       return (resolve(results));
     });
   }),
