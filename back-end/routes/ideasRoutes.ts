@@ -2,8 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/', (req:any, res:any) => {
-  res.send('Hello World');
-});
+const Controllers = require('../controllers/ideasRoute.ts');
+
+router.get('/', Controllers.all);
 
 module.exports = router;
