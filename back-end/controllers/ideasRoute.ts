@@ -19,7 +19,30 @@ const postIdeia = async (req:any, res:any) => {
     res.sendStatus(500);
   }
 };
+
+const category = async (req:any, res:any) => {
+  try {
+    const results = await database.byCategory(req.params.category);
+    res.json(results);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+};
+
+const id = async (req:any, res:any) => {
+  try {
+    const results = await database.byId(req.params.id);
+    res.json(results);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+};
+
 module.exports = {
   all,
   postIdeia,
+  category,
+  id,
 };

@@ -35,6 +35,24 @@ const db = {
       return (resolve(results));
     });
   }),
+  byCategory: (category:string) => new Promise((resolve, reject) => {
+    connection.query('SELECT * FROM ideias WHERE category = ?', category, (err: any, results: any) => {
+      if (err) {
+        return reject(err);
+      }
+      console.log('Sucessful db query');
+      return (resolve(results));
+    });
+  }),
+  byId: (id:number) => new Promise((resolve, reject) => {
+    connection.query('SELECT * FROM ideias WHERE id = ?', id, (err: any, results: any) => {
+      if (err) {
+        return reject(err);
+      }
+      console.log('Sucessful db query');
+      return (resolve(results));
+    });
+  }),
 };
 
 module.exports = db;
